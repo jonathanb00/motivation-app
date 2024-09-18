@@ -19,4 +19,7 @@ export default defineNuxtConfig({
       },
     },
   },
+  plugins: [
+    '~/plugins/vuetify.js',
+  ],
 })
