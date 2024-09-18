@@ -184,11 +184,6 @@ li {
   margin-top: 50px;
 }
 
-.quotes-list {
-  list-style-type: none;
-  padding: 0;
-}
-
 .quote-text {
   font-size: 2rem; 
   font-family: "Montserrat", sans-serif !important;
@@ -201,21 +196,8 @@ li {
 }
 
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 1s ease-in-out, transform 1s ease;
-}
 
-.fade-enter-active {
-  transition-delay: 1s;
-}
 
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
-
-.fade-enter-to, .fade-leave {
-  opacity: 1;
-}
 
 .custom-fade-transition-enter-active, 
 .custom-fade-transition-leave-active {
@@ -235,7 +217,7 @@ li {
 }
 
 .fade-content {
-  transition: opacity 2s ease-in-out; /* Adjust duration here */
+  transition: opacity 2s ease-in-out; 
 }
 
 .fade-content-enter-active, 
