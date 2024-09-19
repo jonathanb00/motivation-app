@@ -1,5 +1,6 @@
 <template>
     <v-app>
+      <div class="background-animation"></div>
     <v-app-bar color="#5ad796" app>
       <v-toolbar-title><v-img
           src="/tembi-logo.png"
@@ -8,14 +9,14 @@
           contain
         ></v-img></v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn text class="custom-btn" @click="openDialog">Favourites </v-btn>
+      <v-btn text class="black-btn mr-5" @click="openDialog">Favourites </v-btn>
     </v-app-bar>
     <v-main>
     <v-container>
       <v-row class="fill-height" align="center" justify="center">
         <v-col cols="auto" class="text-enter">
           <v-card flat class="quote-card">
-            <v-card-title class="custom-font">Time for some motivation?</v-card-title>
+            <v-card-title class="custom-font"><strong>Time for some motivation?</strong></v-card-title>
               <v-card-text>
                     <div class="quote-content">
                         <v-fade-transition class="custom-fade-transition">
@@ -33,7 +34,7 @@
               <v-card-actions>
                 <v-row>
                     <v-col class="d-flex" cols="auto">
-                        <v-btn class="custom-btn" @click="fetchQuote">New Quote</v-btn>
+                        <v-btn class="white-btn" @click="fetchQuote">New Quote</v-btn>
                         <v-btn class="custom-btn ml-2" @click="() => saveQuote(quote, author)">Save To Favourites</v-btn>
                     </v-col>
                 </v-row>
@@ -59,7 +60,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn class="custom-btn" @click="closeDialog">Close</v-btn>
+          <v-btn class="white-btn" @click="closeDialog">Close</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -147,6 +148,25 @@
   font-size: small;
   font-family: "Montserrat", sans-serif;
 }
+
+.white-btn{
+  background-color: white;
+  color:#000000;
+  border-radius: 20px;
+  text-transform: none;
+  border: 1px solid black;
+  font-size: small;
+  font-family: "Montserrat", sans-serif;
+}
+
+.black-btn{
+  background-color: #000000;
+  color:  white;
+  border-radius: 20px;
+  text-transform: none;
+  font-size: small;
+  font-family: "Montserrat", sans-serif;
+}
 .custom-font {
     font-family: "Montserrat", sans-serif !important;
     font-size: large;
@@ -171,11 +191,12 @@ li {
 }
 
 .quote-card {
-  max-width: 1000px; 
-  height: 300px; 
+  max-width: 800px; 
+  height: 400px; 
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: rgba(255, 255, 255, 0);
   align-items: center;
 }
 
@@ -195,10 +216,6 @@ li {
   font-family: "Montserrat", sans-serif !important;
 }
 
-
-
-
-
 .custom-fade-transition-enter-active, 
 .custom-fade-transition-leave-active {
   transition: opacity 1s ease-in-out transform 1s ease; 
@@ -208,7 +225,7 @@ li {
 }
 
 .custom-fade-transition-enter, 
-.custom-fade-transition-leave-to /* .fade-leave-active in <2.1.8 */ {
+.custom-fade-transition-leave-to {
   opacity: 0;
 }
 
@@ -226,10 +243,78 @@ li {
 }
 
 .fade-content-enter, 
-.fade-content-leave-to /* .fade-leave-active in <2.1.8 */ {
+.fade-content-leave-to {
   opacity: 0;
 }
 
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.background-animation::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px; 
+  height: 300px; 
+  background-color: rgba(90, 215, 150, 0.5); 
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: expand 10s forwards; 
+}
+
+.background-animation::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 900px; 
+  height: 900px; 
+  background-color: transparent;
+  border: 5px solid green; 
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-edges 5s infinite ease-in-out;
+  opacity: 0;
+}
+
+@keyframes expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translate(-50%, -50%) scale(3)
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse-edges {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
 
 </style>
   
